@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bookMapper">
+    <resultMap type="bean.Book" id="bookMap">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="book_name" property="bookName"/>
+    </resultMap>
+    <select id="selectBookByUser" resultMap="bookMap" parameterType="bean.User">
+        select * from book where user_name=#{name}
+    </select>
+
+    <insert id="insertBook" parameterType="bean.Book">
+        insert into book(user_name,book_name) values(#{userName},#{bookName})
+    </insert>
+
+
+</mapper>
